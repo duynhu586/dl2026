@@ -1,0 +1,42 @@
+\documentclass{article}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[english]{babel}
+
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+\title{Labwork2: Linear Regression}
+\author{Nguyen Nhu Duy - 2540044}
+
+\begin{document}
+\setlength{\parindent}{0pt}
+\maketitle
+\section{Implement the algorithm}
+Step 1: define the loss function L
+
+Step 2: define parital derivatives over $w_0$ and $w_1$
+
+Step 3: define the iteration follow the below pseudo code
+
+\begin{itemize}
+    \item Assign: $w_0 = w_0 - \mathrm{lr} \cdot \frac{\partial L}{\partial w_0}$ and $w_1 = w_1 - \mathrm{lr} \cdot \frac{\partial L}{\partial w_1}$
+    
+    \item  Re-compute L. Stop if L is small enough, or repeat if not
+\end{itemize}
+
+\section{Effect of different learning rate r}
+\begin{itemize}
+    \item Small $r$: Slow convergence; requires excessive iterations.
+    \item Large $r$: Risk of overshooting; fails to reach the minimum.
+    \item Optimal $r$: Ensures swift and stable convergence to the minimum.
+\end{itemize}
+
+\end{document}
