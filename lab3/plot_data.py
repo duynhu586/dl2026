@@ -25,9 +25,9 @@ for i in range(len(data) - 1):
         x2.append(float(data[i + 1][1]))
         y.append(float(data[i + 1][2]))
 
-w0 = -0.324
-w1 = 0.846
-w2 = -0.090
+w0 = -16.066
+w1 = 5.160
+w2 = 1.536
 
 def draw_line(x):
     return -(w1 * x + w0) / w2
