@@ -15,7 +15,7 @@ def f(w0,w1,w2,x1,x2):
     return w1*x1 + w2*x2 + w0
 
 def L(w0,w1,w2,x1,x2,y):
-    return -y*log(sigmoid(f(w0,w1,w2,x1,x2))) + (1-y)*log(1-sigmoid(f(w0,w1,w2,x1,x2)))
+    return -y*log(sigmoid(f(w0,w1,w2,x1,x2))) - (1-y)*log(1-sigmoid(f(w0,w1,w2,x1,x2)))
 
 def L_all(w0, w1, w2, x1, x2, y):
     sum = 0
@@ -97,11 +97,11 @@ if __name__ == "__main__":
         y.append(float(data[i + 1][2]))
     
     learning_rate = 0.1
-    threshold = 0.1
+    threshold = 0.2
     w0 = 0
     w1 = 1
     w2 = 2
-    print("Gradient Descent with all data points:")
+    print("lr: ", learning_rate)
     optimal_w0, optimal_w1, optimal_w2 = gradient_descent_all(x1, x2, y, w0, w1, w2, learning_rate, threshold)
 
 
