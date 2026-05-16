@@ -1,0 +1,39 @@
+\documentclass{article}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[english]{babel}
+\usepackage{float}
+
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+\title{Labwork 4: Neuron Network}
+\author{Nguyen Nhu Duy - 2540044}
+
+\begin{document}
+\setlength{\parindent}{0pt}
+\maketitle
+\section{Design and implement the network architecture}
+The system has three primary classes: \texttt{Node}, \texttt{Layer}, and \texttt{NeuronNetwork}.
+
+\begin{itemize}
+    \item \texttt{Node}: represents an individual neuron. It is responsible for holding internal parameters and executing mathematical transformations on incoming data using linear sum and sigmoid function.
+
+    \item \texttt{Layer}: acts as a container of multiple \texttt{Node}, representing a single vertical layer in the network architecture. It passes the incoming vector to every neuron in the layer, collects their binary outputs, and returns them as a new list to be used by the next layer.
+
+    \item \texttt{NeuronNetwork}: serves as the main controller. It manages the sequence of \texttt{Layer} objects, handles configuration management, parses initialization text files, and pushes inputs through the entire system. 
+\end{itemize}
+
+\section{Implementation of Feedforward}
+Globally, the \texttt{NeuronNetwork} class loops through the layers sequentially, dynamically passing the output vector of layer $l-1$ as the input vector for layer $l$. Within each layer, the \texttt{Layer} class forwards this input in parallel to all internal \texttt{Node} objects to collect their activations. Finally, each individual node computes a linear weighted sum , applies  sigmoid function , and uses a binary threshold ($\geq 0.5$) to return a final output of $1$ or $0$.
+
+\section{Experiment with the XOR network}
+During initial testing without a binary threshold in the activation functions, the network's continuous raw output hovered uniformly around $0.42$ for all input combinations, failing to separate the logical classes. To correct this, a threshold step was added to the \texttt{Node.activation} method (returning $1$ if $\sigma(z) \geq 0.5$ and $0$ otherwise). This adjustment successfully corrected the system, resulting in the exact binary mappings required by the XOR.
+\end{document}
