@@ -12,9 +12,12 @@ class Node:
             sum += self.weights[i] * inputs[i]
         return sum
     
-    def step(self, x):
-        return 1 if x >= 0 else 0
+    # def step(self, x):
+    #     return 1 if x >= 0 else 0
+
+    def sigmoid(self, x):
+        return 1 / (1 + math.exp(-x))
     
     def activation(self, inputs):
         sum = self.linear_sum(inputs)
-        return self.step(sum)
+        return 1 if self.sigmoid(sum) >= 0.5 else 0
