@@ -45,3 +45,27 @@ nn.init_random([2,1])
 nn.train(x, y, max_epochs=1000, lr=0.5, threshold=0.01)
 
 print("nn.forward(x[2]):", nn.forward(x[2]))
+
+
+def loadfunc2(filestr):
+    with open(filestr, 'r') as f:
+        results = []
+        for line in f:
+                words = line.split(',')
+                results.append((words[0], words[1].rstrip("\n\r")))
+    return results
+
+nn_house = NeuronNetwork()
+nn_house.init_random([1, 1])
+
+data2 = loadfunc2('lr.csv')
+
+x = []
+y = []
+
+for i in range(len(data2) - 1):
+    x.append([float(data2[i][0])])
+    y.append(float(data2[i][1]))
+
+nn_house.train(x, y, max_epochs=10000, lr=0.01, threshold=0.01)
+print("nn_house.forward(x[2]):", nn_house.forward([200]))
